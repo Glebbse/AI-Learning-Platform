@@ -1,9 +1,9 @@
-name: ai-interview-platform
+name: ai-learning-platform
 
 services:
   db:
     image: postgres:16
-    container_name: ai-interview-db
+    container_name: ai-learning-platform-db
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
@@ -21,7 +21,7 @@ services:
       retries: 10
   pgadmin:
     image: dpage/pgadmin4:latest
-    container_name: ai-interview-pgadmin
+    container_name: ai-learning-platform-pgadmin
     restart: unless-stopped
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}

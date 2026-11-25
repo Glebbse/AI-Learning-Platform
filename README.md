@@ -1,100 +1,21 @@
-# AI Interview Platform
+# AI Language Learning & Diagnostic Platform
 
-AI Interview Platform is a FastAPI backend for practicing technical interviews with AI-generated questions, stored answers, automated evaluation, and interview history.
+An AI-assisted English learning platform for intermediate and advanced learners (B1-C2), including IELTS candidates. It identifies recurring weaknesses, guides targeted practice, and verifies improvement on unfamiliar material over time.
 
-The MVP flow is:
+## Reading First
 
-```text
-register/login -> profile -> create interview -> generate questions -> answer questions -> evaluate -> view results
-```
+The first release starts with curated or AI-generated passages and IELTS-style exercises. Objective questions use validated answer keys, and feedback explains answers using evidence from the passage. Reading attempts capture comprehension gaps and unfamiliar vocabulary for follow-up practice.
 
-## Current Stack
+The first milestone is a complete learning cycle from practice and diagnosis to targeted exercises and reassessment on a new passage.
 
-- FastAPI
-- PostgreSQL
-- SQLAlchemy async
-- Alembic
-- Poetry
-- Docker Compose
+## How Learning Adapts
 
-Planned later: OpenAI integration, Redis, RabbitMQ, background workers, cloud deployment, and GraphQL.
+- **Personal Language Knowledge Model** tracks mastery and confidence so gaps in evidence stay visible.
+- **Error Lifecycle Management** groups mistakes into recurring patterns and tracks improvement through independent practice and delayed reassessment.
+- **Cross-Skill Knowledge Transfer** will carry vocabulary and grammar from Reading into Listening, Speaking, and Writing practice.
 
+Writing, Listening, and Speaking follow after the Reading workflow is validated. Full IELTS simulations and personalized study planning are later phases.
 
-## Requirements
+## Development Status
 
-- Python 3.13
-- Poetry
-- Docker Desktop
-
-## Setup
-
-Install dependencies:
-
-```bash
-poetry install --no-root
-```
-
-Create a local `.env` file based on the project settings. Example:
-
-```env
-POSTGRES_DB=ai_interview_platform
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5432
-PGADMIN_EMAIL=admin@example.com
-PGADMIN_PASSWORD=admin
-SECRET_KEY=change-me
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-ALGORITHM=HS256
-```
-
-Start PostgreSQL:
-
-```bash
-docker compose up -d
-```
-
-Run the API locally:
-
-```bash
-poetry run python -m uvicorn app.main:app --reload
-```
-
-Open:
-
-```text
-http://127.0.0.1:8000/docs
-http://127.0.0.1:8000/health
-```
-
-## Database Migrations
-
-Create a migration:
-
-```bash
-poetry run alembic revision --autogenerate -m "create users table"
-```
-
-Apply migrations:
-
-```bash
-poetry run alembic upgrade head
-```
-
-Check current migration:
-
-```bash
-poetry run alembic current
-```
-
-## Development Notes
-
-- Use Poetry's environment for local commands.
-- Keep real secrets in `.env`; do not commit `.env`.
-- Use Docker Compose for local PostgreSQL.
-- Keep migrations reviewed before applying them.
-
-## Docs
-
-Project planning documents live in `docs/`.
+The existing backend uses FastAPI, PostgreSQL, async SQLAlchemy, Alembic, Poetry, and Docker Compose. The health endpoint and authentication foundation are in place. Reading is the first planned learning module.
